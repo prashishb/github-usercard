@@ -68,7 +68,6 @@ function cardMaker(userData) {
   cardInfo.appendChild(username);
   cardInfo.appendChild(location);
   cardInfo.appendChild(profile);
-  profile.appendChild(profileUrl);
   cardInfo.appendChild(followers);
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
@@ -78,9 +77,10 @@ function cardMaker(userData) {
   name.textContent = userData.name;
   username.textContent = userData.login;
   location.textContent = `Location: ${userData.location}`;
-  profile.textContent = 'Profile: ';
+  profile.textContent = `Profile: `;
   profileUrl.href = userData.html_url;
-  profileUrl.textContent = `${userData.html_url}`;
+  profileUrl.innerText = `${userData.html_url}`;
+  profile.appendChild(profileUrl);                                 // This doesn't work if I put it above
   followers.textContent = `Followers: ${userData.followers}`;
   following.textContent = `Following: ${userData.following}`;
   bio.textContent = `Bio: ${userData.bio}`;
