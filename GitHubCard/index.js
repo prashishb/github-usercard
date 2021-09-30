@@ -117,7 +117,24 @@ getUserData('prashishb', '.cards');
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+function getFollowers(user) {
+  const followersArray = [];
+  axios.get(`https://api.github.com/users/${user}/followers`)
+    .then(res => {
+      for (let i = 0; i < res.data.length; i++) {
+        followersArray.push(res.data[i]);
+      }
+      followersArray.forEach(elem => {
+        const users = elem.login;
+        getUserData(users, '.cards');
+      })
+    })
+    .catch(err => {
+      console.error(err);
+    })
+}
+
+getFollowers('tetondan');
 
 /*
   List of LS Instructors Github username's:
