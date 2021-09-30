@@ -93,6 +93,18 @@ function cardMaker(userData) {
     and append the returned markup to the DOM as a child of .cards
 */
 
+function getUserData(user, selector) {
+  axios.get(`https://api.github.com/users/${user}`)
+    .then(res => {
+      const data = cardMaker(res.data);
+      document.querySelector(selector).appendChild(data);
+    })
+    .catch(err => {
+      console.error(err);
+    })
+}
+
+getUserData('prashishb', '.cards');
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
