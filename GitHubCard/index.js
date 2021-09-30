@@ -22,24 +22,6 @@ axios.get('https://api.github.com/users/prashishb')
 */
 
 /*
-  STEP 4: Pass the data received from Github into your function,
-    and append the returned markup to the DOM as a child of .cards
-*/
-
-/*
-  STEP 5: Now that you have your own card getting added to the DOM, either
-    follow this link in your browser https://api.github.com/users/<Your github name>/followers,
-    manually find some other users' github handles, or use the list found at the
-    bottom of the page. Get at least 5 different Github usernames and add them as
-    Individual strings to the friendsArray below.
-
-    Using that array, iterate over it, requesting data for each user, creating a new card for each
-    user, and adding that card to the DOM.
-*/
-
-const followersArray = [];
-
-/*
   STEP 3: Create a function that accepts a single object as its only argument.
     Using DOM methods and properties, create and return the following markup:
 
@@ -58,6 +40,60 @@ const followersArray = [];
       </div>
     </div>
 */
+
+function cardMaker(userData) {
+  // creating elements
+  const card = document.createElement('div');
+  const img = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const name = document.createElement('h3');
+  const userName = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const profileUrl = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
+
+  // assigning classnames
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  name.classList.add('name');
+  userName.classList.add('username');
+
+  // appending to DOM
+  card.appendChild(img);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(name);
+  cardInfo.appendChild(userName);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  profile.appendChild(profileUrl);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+
+  return card;
+}
+
+/*
+  STEP 4: Pass the data received from Github into your function,
+    and append the returned markup to the DOM as a child of .cards
+*/
+
+
+/*
+  STEP 5: Now that you have your own card getting added to the DOM, either
+    follow this link in your browser https://api.github.com/users/<Your github name>/followers,
+    manually find some other users' github handles, or use the list found at the
+    bottom of the page. Get at least 5 different Github usernames and add them as
+    Individual strings to the friendsArray below.
+
+    Using that array, iterate over it, requesting data for each user, creating a new card for each
+    user, and adding that card to the DOM.
+*/
+
+const followersArray = [];
 
 /*
   List of LS Instructors Github username's:
