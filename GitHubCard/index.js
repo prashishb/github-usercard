@@ -47,7 +47,7 @@ function cardMaker(userData) {
   const img = document.createElement('img');
   const cardInfo = document.createElement('div');
   const name = document.createElement('h3');
-  const userName = document.createElement('p');
+  const username = document.createElement('p');
   const location = document.createElement('p');
   const profile = document.createElement('p');
   const profileUrl = document.createElement('a');
@@ -59,19 +59,31 @@ function cardMaker(userData) {
   card.classList.add('card');
   cardInfo.classList.add('card-info');
   name.classList.add('name');
-  userName.classList.add('username');
+  username.classList.add('username');
 
   // appending to DOM
   card.appendChild(img);
   card.appendChild(cardInfo);
   cardInfo.appendChild(name);
-  cardInfo.appendChild(userName);
+  cardInfo.appendChild(username);
   cardInfo.appendChild(location);
   cardInfo.appendChild(profile);
   profile.appendChild(profileUrl);
   cardInfo.appendChild(followers);
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
+
+  // adding content
+  img.src = userData.avatar_url;
+  name.textContent = userData.name;
+  username.textContent = userData.login;
+  location.textContent = `Location: ${userData.location}`;
+  profile.textContent = 'Profile: ';
+  profileUrl.href = userData.html_url;
+  profileUrl.textContent = `${userData.html_url}`;
+  followers.textContent = `Followers: ${userData.followers}`;
+  following.textContent = `Following: ${userData.following}`;
+  bio.textContent = `Bio: ${userData.bio}`;
 
   return card;
 }
